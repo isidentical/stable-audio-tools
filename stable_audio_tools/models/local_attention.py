@@ -7,8 +7,7 @@ from .blocks import AdaRMSNorm
 from .transformer import Attention, FeedForward, RotaryEmbedding, LayerNorm
 
 def checkpoint(function, *args, **kwargs):
-    kwargs.setdefault("use_reentrant", False)
-    return torch.utils.checkpoint.checkpoint(function, *args, **kwargs)
+    return function(*args, **kwargs)
 
 # Adapted from https://github.com/lucidrains/local-attention/blob/master/local_attention/transformer.py
 class ContinuousLocalTransformer(nn.Module):
