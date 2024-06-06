@@ -18,8 +18,8 @@ from .factory import create_pretransform_from_config, create_bottleneck_from_con
 from .pretransforms import Pretransform
 
 def checkpoint(function, *args, **kwargs):
-    kwargs.setdefault("use_reentrant", False)
-    return torch.utils.checkpoint.checkpoint(function, *args, **kwargs)
+    return function(*args, **kwargs)
+
 
 def get_activation(activation: Literal["elu", "snake", "none"], antialias=False, channels=None) -> nn.Module:
     if activation == "elu":
