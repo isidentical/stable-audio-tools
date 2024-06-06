@@ -23,8 +23,7 @@ except ImportError:
     natten = None
 
 def checkpoint(function, *args, **kwargs):
-    kwargs.setdefault("use_reentrant", False)
-    return torch.utils.checkpoint.checkpoint(function, *args, **kwargs)
+    return function(*args, **kwargs)
 
 
 # Copied and modified from https://github.com/lucidrains/x-transformers/blob/main/x_transformers/attend.py under MIT License
